@@ -1,0 +1,34 @@
+//1. Umieść w bazie (nazwa bucketa ma być Twoim numerem indeksu poprzedzonym literą „s”) 5 wartości, gdzie każda z nich ma być dokumentem json mającym 4 pola co najmniej dwóch różnych typów.
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Adrian", "last_name": "Zaras", "id": 24059, "years": 25}' http://localhost:8098/buckets/s17164/keys/zaras >> rozwiazanie1.txt
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Jan", "last_name": "Nowak", "id": 10000, "years": 22}' http://localhost:8098/buckets/s17164/keys/nowak >> rozwiazanie1.txt
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Adrian", "last_name": "Kowalski", "id": 10001, "years": 23}' http://localhost:8098/buckets/s17164/keys/kowalski >> rozwiazanie1.txt
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Kamil", "last_name": "Nowicki", "id": 10002, "years": 24}' http://localhost:8098/buckets/s17164/keys/nowicki >> rozwiazanie1.txt
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Adrian", "last_name": "Lewandowski", "id": 10003, "years": 30}' http://localhost:8098/buckets/s17164/keys/lewandowski >> rozwiazanie1.txt
+
+//2. Pobierz z bazy jedną z dodanych przez Ciebie wartości.
+C:\WINDOWS\system32\curl.exe -i http://localhost:8098/buckets/s17164/keys/zaras >> rozwiazanie2.txt
+
+
+//3. Zmodyfikuj jedną z wartości – dodając dodatkowe pole do dokumentu.
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Adrian", "last_name": "Lewandowski", "id": 10003, "years": 30, "birth-of-date": "18.10.1995"}' http://localhost:8098/buckets/s17164/keys/lewandowski > rozwiazanie3.txt
+
+//4. Zmodyfikuj jedną z wartości – usuwając jedną pole z wybranego dokumentu.
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Kamil", "last_name": "Nowicki", "id": 10002}' http://localhost:8098/buckets/s17164/keys/nowicki > rozwiazanie4.txt
+
+//5. Zmodyfikuj jedną z wartości – zmieniając wartość jednego z pól.
+C:\WINDOWS\system32\curl.exe -i -XPUT -H "Content-Type: application/json" -d '{"first_name": "Adrian", "last_name": "Kowalski", "id": 10001, "years": 25}' http://localhost:8098/buckets/s17164/keys/kowalski > rozwiazanie5.txt
+
+//6. Usuń jeden z dokumentów z bazy.
+C:\WINDOWS\system32\curl.exe -i -XDELETE http://localhost:8098/buckets/s17164/keys/zaras > rozwiazanie6.txt
+
+//7. Spróbuj pobrać z bazy wartość, która nie istnieje w tej bazie.
+ C:\WINDOWS\system32\curl.exe -XDELETE http://localhost:8098/buckets/s17164/keys/zaras > rozwiazanie7.txt
+
+//8. Dodaj do bazy 1 dokument json (zawierający 1 pole), ale nie specyfikuj klucza.
+C:\WINDOWS\system32\curl.exe -i -XPOST -H "Content-Type: application/json" -d '{"first_name": "Adrian"}' http://localhost:8098/buckets/s17164/keys > rozwiazanie8.txt
+
+//9. Pobierz z bazy element z zadania 8.
+C:\WINDOWS\system32\curl.exe -i -XGET  http://localhost:8098/buckets/s17164/keys/JpWC83p6D4zhQ0pqFtnZ5zQyda6 > rozwiazanie9.txt
+
+//10. Usuń z bazy element z zadania 8.
+C:\WINDOWS\system32\curl.exe -i -XDELETE  http://localhost:8098/buckets/s17164/keys/JpWC83p6D4zhQ0pqFtnZ5zQyda6 > rozwiazanie10.txt
